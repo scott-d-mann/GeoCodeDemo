@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         for (Address a : revGeoAddresses) {
-            Log.d("Address", "Address: " + a.toString());
+            Log.d("RevAddress", "Address: " + a.toString());
             //to see full list of data you can ghet from the address object see https://developer.android.com/reference/android/location/Address
         }
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         for (Address b : revGeoAddresses) {
-            Log.d("Address", "Latitude: " + b.getLatitude() + " Longitude: " + b.getLongitude() + " Feature Name: " + b.getFeatureName());
+            Log.d("GeoAddress", "Latitude: " + b.getLatitude() + " Longitude: " + b.getLongitude() + " Feature Name: " + b.getFeatureName());
             //to see full list of data you can ghet from the address object see https://developer.android.com/reference/android/location/Address
         }
     }
