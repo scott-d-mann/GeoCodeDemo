@@ -31,6 +31,18 @@ public class MainActivity extends AppCompatActivity {
         // Geocoder object to access API
         geocoder = new Geocoder(this);
 
+        //********* Get Latitude Longitude from Address (Geocode) **********
+        try {
+            geoAddresses = geocoder.getFromLocationName(locationName, 5);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (Address a : geoAddresses) {
+            Log.d("GeoAddress", "Latitude: " + a.getLatitude() + " Longitude: " + a.getLongitude() + " Feature Name: " + a.getFeatureName());
+            //to see full list of data you can ghet from the address object see https://developer.android.com/reference/android/location/Address
+        }
+
         //********* Get address from Latitude Longitude (Reverse Geocode) **********
         try {
             revGeoAddresses = geocoder.getFromLocation(latitude, longitude, 5);
@@ -38,20 +50,8 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        for (Address a : revGeoAddresses) {
-            Log.d("RevAddress", "Address: " + a.toString());
-            //to see full list of data you can ghet from the address object see https://developer.android.com/reference/android/location/Address
-        }
-
-        //********* Get Latitude Longitude from Address (Geocode) **********
-        try {
-            geoAddresses = geocoder.getFromLocationName(locationName, 2);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         for (Address b : revGeoAddresses) {
-            Log.d("GeoAddress", "Latitude: " + b.getLatitude() + " Longitude: " + b.getLongitude() + " Feature Name: " + b.getFeatureName());
+            Log.d("RevAddress", "Address: " + b.toString());
             //to see full list of data you can ghet from the address object see https://developer.android.com/reference/android/location/Address
         }
     }
